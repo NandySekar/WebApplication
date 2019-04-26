@@ -10,6 +10,7 @@ services:
     volumes:
     - /opt/mysql_data:/var/lib/mysql
     - /opt/mysql/config:/etc/mysql/conf.d
+    restart: always
     ports:
     - 3306:3306
   application:
@@ -21,6 +22,7 @@ services:
     - database_password=tiger
     volumes:
     - ./target:/usr/local/tomcat/webapps
+    restart: always
     ports:
     - 8080:8080
     links:
