@@ -1,20 +1,25 @@
+version: '3.3'
 services:
-    db:
-        image: mysql:latest
-        environment:
-            MYSQL_ROOT_PASSWORD: supersecret
-            MYSQL_DATABASE: springmybatis
-            MYSQL_USER: root
-            MYSQL_PASSWORD: root
-        volumes:
-            - /opt/mysql_data:/var/lib/mysql
-    webapp:
-        image: tomcat
-        environment:
-            - database_url=jdbc:mysql://{{MySQL|container_ip}}:3306/{{MySQL|MYSQL_DATABASE}}
-            - database_username={{MySQL|MYSQL_USER}}
-            - database_password={{MySQL|MYSQL_ROOT_PASSWORD}}
-        volumes:
-            - ./target/ApplicationDevelopment.war:/usr/local/tomcat/webapps
-        ports:
-            - "8080:8080"
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecret
+      MYSQL_DATABASE: springmybatis
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: tiger
+    volumes:
+    - /opt/mysql_data:/var/lib/mysql
+    ports:
+    - 3306:3306
+  application:
+    image: tomcat
+    environment:
+    - database_driverClassName=com.mysql.jdbc.Driver
+    - database_url=jdbc:mysql://http://czhpk86358dns.eastus2.cloudapp.azure.com:3306/{{MySQL|MYSQL_DATABASE}}
+    - database_username={{MySQL|MYSQL_USER}}
+    - database_password={{MySQL|MYSQL_ROOT_PASSWORD}}
+    volumes:
+    - ./target/ApplicationDevelopment.war:/usr/local/tomcat/webapps
+    ports:
+    - 8080:8080
+    links: -db
