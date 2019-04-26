@@ -9,7 +9,7 @@ services:
       MYSQL_PASSWORD: tiger
     volumes:
     - /opt/mysql_data:/var/lib/mysql
-    - ./db:/docker-entrypoint-initdb.d
+    - ./db/mysql-init.sql:/docker-entrypoint-initdb.d
     restart: always
     ports:
     - 3306:3306
