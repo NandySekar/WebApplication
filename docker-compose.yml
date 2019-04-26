@@ -2,6 +2,7 @@ version: '3.3'
 services:
   db:
     image: mysql:latest
+    command: mysqld --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: supersecret
       MYSQL_DATABASE: springmybatis
@@ -15,7 +16,7 @@ services:
     image: tomcat
     environment:
     - database_driverClassName=com.mysql.jdbc.Driver
-    - database_url=jdbc:mysql://czhpk86358dns.eastus2.cloudapp.azure.com:3306/springmybatis
+    - database_url=jdbc:mysql://czhpk86358dns.eastus2.cloudapp.azure.com:3306/springmybatis?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
     - database_username=scott
     - database_password=tiger
     volumes:
