@@ -15,9 +15,9 @@ services:
     image: tomcat
     environment:
     - database_driverClassName=com.mysql.jdbc.Driver
-    - database_url=jdbc:mysql://czhpk86358dns.eastus2.cloudapp.azure.com:3306/{{MySQL|MYSQL_DATABASE}}
-    - database_username={{MySQL|MYSQL_USER}}
-    - database_password={{MySQL|MYSQL_ROOT_PASSWORD}}
+    - database_url=jdbc:mysql://czhpk86358dns.eastus2.cloudapp.azure.com:3306/springmybatis
+    - database_username=scott
+    - database_password=tiger
     volumes:
     - ./target:/usr/local/tomcat/webapps
     ports:
