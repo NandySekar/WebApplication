@@ -16,7 +16,7 @@ services:
     image: tomcat
     environment:
     - database_driverClassName=com.mysql.jdbc.Driver
-    - database_url=jdbc:mysql://czhpk86358dns.eastus2.cloudapp.azure.com:3306/springmybatis?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+    - database_url=jdbc:mysql://db:3306/springmybatis?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
     - database_username=scott
     - database_password=tiger
     volumes:
