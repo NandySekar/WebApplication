@@ -12,12 +12,9 @@
 			
          <dataSource type = "POOLED">
             <property name = "driver" value = "com.mysql.cj.jdbc.Driver"/>
-             <property name = "url" value = "jdbc:mysql://localhost:3306/springmybatis"/>
-            <property name = "username" value = "root"/>
-            <property name = "password" value = "anusha@sql"/> 
-            <!-- <property name = "url" value = "${url}"/>
-            <property name = "username" value = "${username}"/>
-            <property name = "password" value = "${password}"/> -->
+             <property name = "url" value = "${database_url}"/>
+            <property name = "username" value = "${database_username}"/>
+            <property name = "password" value = "${database_password}"/> 
          </dataSource>   
          
       </environment>

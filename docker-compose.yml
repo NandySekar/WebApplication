@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7.22
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecret
+      MYSQL_DATABASE: springmybatis
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: tiger
+    volumes:
+    - /opt/mysql_data:/var/lib/mysql
+    - ./db:/docker-entrypoint-initdb.d
+    restart: always
+    ports:
+    - 3306:3306
+  application:
+    image: tomcat
+    environment:
+    - database_driverClassName=com.mysql.jdbc.Driver
+    - database_url=jdbc:mysql://db:3306/springmybatis?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+    - database_username=scott
+    - database_password=tiger
+    volumes:
+    - ./target:/usr/local/tomcat/webapps
+    restart: always
+    ports:
+    - 8080:8080
+    links:
+    - db
