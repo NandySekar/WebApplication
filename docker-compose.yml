@@ -9,7 +9,7 @@ services:
       MYSQL_PASSWORD: tiger
     volumes:
     - /opt/mysql_data:/var/lib/mysql
-    - /usr/local/opt/mysql/config:/etc/mysql/conf.d
+    - /opt/mysql/config:/etc/mysql/conf.d
     ports:
     - 3306:3306
   application:
