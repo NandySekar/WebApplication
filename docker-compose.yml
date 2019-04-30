@@ -17,7 +17,7 @@ services:
     image: tomcat
     environment:
     - database_driverClassName=com.mysql.jdbc.Driver
-    - database_url=jdbc:mysql://{{MySQL|container_ip}}/{{MySQL|MYSQL_DATABASE}}?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+    - database_url=jdbc:mysql://{{MySQL|container_ip}}:3306/{{MySQL|MYSQL_DATABASE}}
     - database_username={{MySQL|MYSQL_USER}}
     - database_password={{MySQL|MYSQL_ROOT_PASSWORD}}
     volumes:
